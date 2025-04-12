@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Game Landing Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #121212;
+      margin: 0;
+      padding: 0;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow-y: auto;
+    }
+
+    .container {
+      max-width: 400px;
+      width: 100%;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      background-color: #1E1E1E;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      margin: 20px 0;
+    }
+
+    .app-name {
+      font-size: 28px;
+      font-weight: bold;
+      margin: 0;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .image-wrapper {
+      position: relative;
+      width: 240px;
+      height: 240px;
+    }
+
+    .app-image {
+      width: 240px;
+      height: 240px;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      border: 2px solid #22c55e;
+    }
+
+    .app-label {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #22c55e;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 15px;
+      font-size: 14px;
+      box-shadow: 0 2px 8px rgba(34, 197, 94, 0.5);
+    }
+
+    .details {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 300px;
+      text-align: center;
+    }
+
+    .details div {
+      flex: 1;
+    }
+
+    .details i {
+      font-size: 18px;
+      color: #22c55e;
+      margin-bottom: 5px;
+    }
+
+    .details p {
+      margin: 0;
+      font-size: 14px;
+      color: white;
+      opacity: 0.8;
+    }
+
+    .popularity {
+      width: 100%;
+      max-width: 300px;
+      text-align: left;
+    }
+
+    .popularity p {
+      margin: 0 0 5px;
+      font-size: 14px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .popularity-bar {
+      width: 100%;
+      height: 8px;
+      background: #444;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .popularity-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #22c55e, #f64f59);
+      border-radius: 4px;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 300px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .stats div {
+      text-align: center;
+      flex: 1;
+    }
+
+    .stats i {
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+
+    .stats .likes i {
+      color: #22c55e;
+    }
+
+    .stats .dislikes i {
+      color: #f64f59;
+    }
+
+    .stats p {
+      margin: 5px 0;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .stats small {
+      font-size: 12px;
+      color: white;
+      opacity: 0.7;
+    }
+
+    .download-btn {
+      background: #22c55e;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 15px 0;
+      font-size: 18px;
+      font-weight: bold;
+      width: 100%;
+      max-width: 300px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(34, 197, 94, 0.5);
+    }
+
+    .download-btn i {
+      margin-right: 8px;
+    }
+
+    .error-message {
+      font-size: 20px;
+      color: #f64f59;
+      text-align: center;
+    }
+
+    .back-btn {
+      color: #22c55e;
+      text-decoration: none;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+
+    .back-btn:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="container">
+    <h1 class="app-name" id="app-name"></h1>
+    <div class="image-wrapper">
+      <img class="app-image" id="app-image" alt="Game Logo">
+      <div class="app-label" id="app-label"></div>
+    </div>
+    <div class="details">
+      <div>
+        <i class="fas fa-sync-alt"></i>
+        <p>Updated<br><span id="updated"></span></p>
+      </div>
+      <div>
+        <i class="fas fa-code"></i>
+        <p>Developer<br><span id="developer"></span></p>
+      </div>
+      <div>
+        <i class="fas fa-tag"></i>
+        <p>Version<br><span id="version"></span></p>
+      </div>
+    </div>
+    <div class="popularity">
+      <p>Popularity <span id="popularity"></span>%</p>
+      <div class="popularity-bar">
+        <div class="popularity-fill" id="popularity-fill"></div>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="likes">
+        <i class="fas fa-thumbs-up"></i>
+        <p id="likes"></p>
+        <small>Votes: <span id="votes"></span></small>
+      </div>
+      <div class="dislikes">
+        <i class="fas fa-thumbs-down"></i>
+        <p id="dislikes"></p>
+        <small>Comments: <span id="comments"></span></small>
+      </div>
+    </div>
+    <button class="download-btn">
+      <i class="fas fa-download"></i> DOWNLOAD
+    </button>
+    <a href="index.html" class="back-btn">Back to Home</a>
+  </div>
+
+  <script>
+    // بيانات الألعاب
+    const games = [
+      {
+        id: "gta6",
+        name: "Grand Theft Auto V",
+        label: "MOD",
+        image: "https://i.postimg.cc/3rDxb4bm/GTA-6-artwork.jpg",
+        updated: "11-04-2025, 10:00",
+        developer: "Rockstar Games",
+        version: "1.0.5",
+        popularity: 95,
+        likes: "+10M",
+        dislikes: "-500K",
+        votes: "15M",
+        comments: "0"
+      },
+      {
+        id: "fortnite",
+        name: "Fortnite",
+        label: "MOD",
+        image: "https://i.postimg.cc/NjWK06Vs/Zj1tGXG.png",
+        updated: "10-04-2025, 09:00",
+        developer: "Epic Games",
+        version: "24.0.1",
+        popularity: 92,
+        likes: "+12M",
+        dislikes: "-300K",
+        votes: "18M",
+        comments: "0"
+      },
+      {
+        id: "playtime",
+        name: "Poppy Playtime",
+        label: "MOD",
+        image: "https://i.postimg.cc/t4dyGFhn/poppy-playtime-yaypc.jpg",
+        updated: "08-04-2025, 07:00",
+        developer: "MOB Games",
+        version: "1.2.0",
+        popularity: 88,
+        likes: "+2M",
+        dislikes: "-100K",
+        votes: "3M",
+        comments: "0"
+      },
+      {
+        id: "fifa25",
+        name: "FIFA 25",
+        label: "MOD",
+        image: "https://i.postimg.cc/L4qJK0hq/GOAL-Blank-WEB-Facebook-2024-07-17-T151013-046.jpg",
+        updated: "07-04-2025, 06:00",
+        developer: "EA Sports",
+        version: "22.1.0",
+        popularity: 90,
+        likes: "+8M",
+        dislikes: "-400K",
+        votes: "12M",
+        comments: "0"
+      },
+      {
+        id: "spiderman",
+        name: "Spider-Man",
+        label: "MOD",
+        image: "https://i.postimg.cc/NfMpctm6/The-Amazing-Spider-Man-2-icon.webp",
+        updated: "06-04-2025, 05:00",
+        developer: "Insomniac Games",
+        version: "1.0.3",
+        popularity: 87,
+        likes: "+5M",
+        dislikes: "-200K",
+        votes: "7M",
+        comments: "0"
+      },
+ 
+      {
+        id: "flappyroyale",
+        name: "Flappy Royale",
+        label: "MOD",
+        image: "https://i.postimg.cc/PJqzTbpX/flappyroyale-io.jpg",
+        updated: "04-04-2025, 03:00",
+        developer: "Orta Therox",
+        version: "1.0.2",
+        popularity: 75,
+        likes: "+300K",
+        dislikes: "-20K",
+        votes: "500K",
+        comments: "0"
+      },
+      {
+        id: "pokemonuranium",
+        name: "Pokemon Uranium",
+        label: "MOD",
+        image: "https://i.postimg.cc/Kzcxc4Zc/TpPQbl6.png",
+        updated: "03-04-2025, 02:00",
+        developer: "Involuntary Twitch",
+        version: "1.2.5",
+        popularity: 82,
+        likes: "+1.2M",
+        dislikes: "-80K",
+        votes: "2M",
+        comments: "0"
+      },
+      {
+        id: "valorant",
+        name: "Valorant",
+        label: "MOD",
+        image: "https://i.postimg.cc/HkM0Ykxy/apps-21507-13663857844271189-4c1de202-3961-4c40-a0aa-7f4f1388775a.jpg",
+        updated: "02-04-2025, 01:00",
+        developer: "Riot Games",
+        version: "3.0.0",
+        popularity: 93,
+        likes: "+15M",
+        dislikes: "-600K",
+        votes: "20M",
+        comments: "0"
+      },
+      {
+        id: "thesims4",
+        name: "The Sims 4",
+        label: "MOD",
+        image: "https://i.postimg.cc/3NnyrPMV/mS3N9Pj.png",
+        updated: "29-03-2025, 21:00",
+        developer: "Maxis",
+        version: "1.96.0",
+        popularity: 90,
+        likes: "+9M",
+        dislikes: "-400K",
+        votes: "13M",
+        comments: "0"
+      },
+	  {
+        id: "garrysmod",
+        name: "Garry's Mod",
+        label: "MOD",
+        image: "https://i.postimg.cc/j2Gpfjr7/J9SS0en.jpg",
+        updated: "11-04-2025, 10:00",
+        developer: "unknow Games",
+        version: "1.0.5",
+        popularity: 95,
+        likes: "+10M",
+        dislikes: "-500K",
+        votes: "15M",
+        comments: "0"
+      },
+	  {
+        id: "fallguys",
+        name: "Fall Guys",
+        label: "MOD",
+        image: "https://i.postimg.cc/g0sb7d3C/lEeVR3m.png",
+        updated: "11-04-2025, 10:00",
+        developer: "Fall Guys",
+        version: "1.0.5",
+        popularity: 95,
+        likes: "+10M",
+        dislikes: "-500K",
+        votes: "15M",
+        comments: "0"
+      },
+    ];
+
+    // الحصول على معرف اللعبة من URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const gameId = urlParams.get('id');
+
+    // التحقق من وجود المعرف
+    if (!gameId) {
+      document.getElementById('container').innerHTML = '<p class="error-message">Error: No game ID provided in URL.</p><a href="index.html" class="back-btn">Back to Home</a>';
+    } else {
+      // البحث عن اللعبة بناءً على المعرف
+      const game = games.find(g => g.id.toLowerCase() === gameId.toLowerCase());
+
+      // التحقق من وجود اللعبة
+      if (!game) {
+        document.getElementById('container').innerHTML = '<p class="error-message">Error: Game Not Found.</p><a href="index.html" class="back-btn">Back to Home</a>';
+      } else {
+        // ملء العناصر ببيانات اللعبة
+        document.getElementById('app-name').textContent = game.name || 'Unknown Game';
+        document.getElementById('app-label').textContent = game.label || 'Unknown Label';
+        document.getElementById('app-image').src = game.image || 'https://via.placeholder.com/240';
+        document.getElementById('app-image').alt = `${game.name || 'Game'} Logo`;
+        document.getElementById('updated').textContent = game.updated || 'N/A';
+        document.getElementById('developer').textContent = game.developer || 'Unknown';
+        document.getElementById('version').textContent = game.version || 'N/A';
+        document.getElementById('popularity').textContent = game.popularity || '0';
+        document.getElementById('popularity-fill').style.width = `${game.popularity || 0}%`;
+        document.getElementById('likes').textContent = game.likes || '0';
+        document.getElementById('dislikes').textContent = game.dislikes || '0';
+        document.getElementById('votes').textContent = game.votes || '0';
+        document.getElementById('comments').textContent = game.comments || '0';
+        document.title = `${game.name || 'Game'} - Landing Page`;
+      }
+    }
+  </script>
+</body>
+</html>
