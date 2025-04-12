@@ -3,57 +3,56 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ProDro - Apps & Games</title>
+    <title>ProDro</title>
     <style>
         body {
             background-color: #121212;
-            font-family: 'Segoe UI', Arial, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif; /* تحسين الخط */
             color: white;
             text-align: center;
             margin: 0;
             padding: 0;
-            overflow-x: hidden;
         }
 
         h1 {
-            margin: 20px 0; /* كما في الكود الأصلي */
+            margin: 20px 0;
+            color: #22c55e; /* تحسين لون العنوان */
         }
 
         input {
-            width: 80%; /* كما في الكود الأصلي */
-            max-width: 400px; /* كما في الكود الأصلي */
-            padding: 10px; /* كما في الكود الأصلي */
-            margin: 10px 0; /* كما في الكود الأصلي */
-            border-radius: 5px; /* كما في الكود الأصلي */
-            border: none; /* كما في الكود الأصلي */
-            font-size: 16px; /* كما في الكود الأصلي */
-            background-color: #1e1e1e; /* للحفاظ على التصميم */
-            color: white; /* للحفاظ على التصميم */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* للحفاظ على التصميم */
+            width: 80%;
+            max-width: 400px;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+            background-color: #1e1e1e; /* تحسين الخلفية */
+            color: white; /* تحسين لون النص */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* إضافة ظل خفيف */
         }
 
         input:focus {
             outline: none;
-            border: 1px solid #22c55e; /* تحسين بصري */
+            border: 1px solid #22c55e; /* تحسين عند التركيز */
         }
 
         .app-container {
             display: flex;
-            flex-wrap: wrap; /* كما في الكود الأصلي */
-            justify-content: center; /* كما في الكود الأصلي */
-            gap: 15px; /* كما في الكود الأصلي */
-            padding: 20px; /* كما في الكود الأصلي */
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
         }
 
         .app-card {
             background-color: #1e1e1e;
-            padding: 15px; /* كما في الكود الأصلي */
-            border-radius: 10px; /* كما في الكود الأصلي */
-            width: 200px; /* كما في الكود الأصلي */
+            padding: 15px;
+            border-radius: 10px;
+            width: 200px;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* للحفاظ على التصميم */
-            cursor: pointer; /* لجعل البطاقة قابلة للنقر */
-            border: 1px solid #333; /* للإشارة إلى أنها قابلة للنقر */
+            cursor: pointer; /* للإشارة إلى أن البطاقة قابلة للنقر */
+            border: 1px solid #333; /* حدود خفيفة للإشارة إلى أنها تفاعلية */
         }
 
         .app-card:hover {
@@ -62,62 +61,59 @@
         }
 
         .app-card img {
-            width: 100px; /* كما في الكود الأصلي */
-            height: 100px; /* كما في الكود الأصلي */
-            border-radius: 10px; /* كما في الكود الأصلي */
-            object-fit: cover; /* للحفاظ على التصميم */
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            object-fit: cover; /* تحسين عرض الصورة */
         }
 
         .app-card h3 {
-            margin: 10px 0; /* كما في الكود الأصلي */
-            font-size: 18px; /* كما في الكود الأصلي */
+            margin: 10px 0;
+            font-size: 18px;
             color: #fff;
-            text-transform: capitalize;
+            text-transform: capitalize; /* تحسين تنسيق النص */
         }
 
         .app-card .category {
-            margin: 5px 0; /* كما في الكود الأصلي */
-            font-size: 14px; /* كما في الكود الأصلي */
-            color: #22c55e;
+            margin: 5px 0;
+            font-size: 14px;
+            color: #22c55e; /* لون الفئة */
             font-weight: 500;
         }
 
         .app-card .platforms {
-            margin: 5px 0; /* كما في الكود الأصلي */
-            font-size: 14px; /* كما في الكود الأصلي */
-            color: #bbb;
-            background-color: #252525;
-            padding: 5px 10px;
-            border-radius: 10px;
+            margin: 5px 0;
+            font-size: 14px;
+            opacity: 0.8;
+            background-color: #252525; /* خلفية لإبراز القسم */
+            padding: 5px 10px; /* تباعد داخلي */
+            border-radius: 10px; /* زوايا دائرية */
             display: inline-block;
-            opacity: 0.8; /* كما في الكود الأصلي */
         }
 
         .app-card .platforms span {
-            color: #22c55e;
+            color: #22c55e; /* لون الأيقونات */
             font-weight: 600;
         }
 
         .install-btn {
             background-color: #22c55e;
             color: white;
-            padding: 10px; /* كما في الكود الأصلي */
-            border-radius: 5px; /* كما في الكود الأصلي */
+            padding: 10px;
+            border-radius: 5px;
             text-decoration: none;
             display: block;
-            margin-top: 10px; /* كما في الكود الأصلي */
-            font-weight: 500;
+            margin-top: 10px;
         }
 
         .install-btn:hover {
-            background-color: #1ea34b; /* كما في الكود الأصلي */
+            background-color: #1ea34b;
         }
 
         #no-results {
-            font-size: 1.1em;
-            margin: 20px 0;
-            color: #bbb;
-            opacity: 0.7; /* كما في الكود الأصلي */
+            margin: 5px 0;
+            font-size: 14px;
+            opacity: 0.7;
         }
 
         /* Responsive Design */
@@ -139,7 +135,7 @@
 </head>
 <body>
     <h1>ProDro Apps & Games</h1>
-    <input type="text" placeholder="Search for Apps or Games..." />
+    <input type="text" placeholder="APP OR GAME NAME"/>
     <p id="no-results" style="display:none;">No matching apps or games found.</p>
 
     <div class="app-container">
@@ -257,7 +253,7 @@
         // منع النقر على زر Install من التداخل مع النقر على البطاقة
         document.querySelectorAll('.install-btn').forEach(btn => {
             btn.addEventListener('click', function (e) {
-                e.stopPropagation(); // منع النقر على الزر من تفعيل حدث النقر على البطاقة
+                e.stopPropagation();
             });
         });
     </script>
