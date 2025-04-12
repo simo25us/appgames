@@ -3,203 +3,264 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ProDro</title>
-	
+    <title>ProDro - Apps & Games</title>
     <style>
         body {
             background-color: #121212;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
             color: white;
             text-align: center;
             margin: 0;
             padding: 0;
+            overflow-x: hidden;
         }
 
         h1 {
-            margin: 20px 0;
+            margin: 30px 0;
+            font-size: 2.5em;
+            letter-spacing: 1px;
+            color: #22c55e;
         }
 
         input {
             width: 80%;
-            max-width: 400px;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            border: none;
+            max-width: 450px;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 25px;
+            border: 1px solid #333;
+            background-color: #1e1e1e;
+            color: white;
             font-size: 16px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #22c55e;
         }
 
         .app-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 15px;
-            padding: 20px;
+            gap: 20px;
+            padding: 30px;
         }
 
         .app-card {
-            background-color: #1E1E1E;
+            background-color: #1e1e1e;
             padding: 15px;
-            border-radius: 10px;
-            width: 200px;
+            border-radius: 15px;
+            width: 200px; /* العرض الأصلي كما في الكود الأول */
             text-align: center;
-            transition: transform 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            cursor: pointer; /* يجعل المؤشر يبدو كرابط */
+            border: 1px solid #333; /* حدود خفيفة للإشارة إلى أنها قابلة للنقر */
         }
 
         .app-card:hover {
-            transform: scale(1.05);
+            border-color: #22c55e; /* تغيير لون الحدود عند التمرير */
+            background-color: #252525; /* تغيير خفيف في الخلفية */
         }
 
         .app-card img {
             width: 100px;
             height: 100px;
-            border-radius: 10px;
+            border-radius: 12px;
+            object-fit: cover;
         }
 
         .app-card h3 {
             margin: 10px 0;
-            font-size: 18px;
+            font-size: 1.1em;
+            color: #fff;
+            text-transform: capitalize;
         }
 
-        .app-card p {
+        .app-card .category {
             margin: 5px 0;
-            font-size: 14px;
-            opacity: 0.8;
+            font-size: 0.85em;
+            color: #22c55e;
+            font-weight: 500;
+        }
+
+        .app-card .platforms {
+            margin: 8px 0;
+            font-size: 0.9em;
+            color: #bbb;
+            background-color: #252525;
+            padding: 5px 10px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        .app-card .platforms span {
+            color: #22c55e;
+            font-weight: 600;
         }
 
         .install-btn {
             background-color: #22c55e;
             color: white;
-            padding: 10px;
-            border-radius: 5px;
+            padding: 8px;
+            border-radius: 8px;
             text-decoration: none;
             display: block;
             margin-top: 10px;
-            transition: background-color 0.3s;
+            font-weight: 500;
         }
 
         .install-btn:hover {
-            background-color: #1ea34b;
+            background-color: #1ea34b; /* تغيير لون الزر عند التمرير */
+        }
+
+        #no-results {
+            font-size: 1.1em;
+            margin: 20px 0;
+            color: #bbb;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .app-card {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            input {
+                width: 90%;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>name page</h1>
-    <input type="text" placeholder="APP OR GAME NAME"/>
-<p id="no-results" style="display:none; opacity: 0.7;">No matching apps or games found.</p>
+    <h1>ProDro Apps & Games</h1>
+    <input type="text" placeholder="Search for Apps or Games..." />
+    <p id="no-results" style="display:none;">No matching apps or games found.</p>
 
     <div class="app-container">
-        <div class="app-card">
+        <div class="app-card" onclick="window.location.href='game.html?id=gta6'">
             <img src="https://i.postimg.cc/3rDxb4bm/GTA-6-artwork.jpg" alt="GTA 6"/>
             <h3>GTA 6</h3>
-            <p>Platforms: 🖥📱</p>
+            <p class="category">Action</p>
+            <p class="platforms">Platforms: <span>🖥📱</span></p>
             <a href="game.html?id=gta6" class="install-btn">Install</a>
         </div>
 
-        <div class="app-card">
+        <div class="app-card" onclick="window.location.href='game.html?id=fortnite'">
             <img src="https://i.postimg.cc/NjWK06Vs/Zj1tGXG.png" alt="Fortnite Mobile"/>
-            <h3>FORTNITE MOBILE</h3>
-            <p>Platforms: 🖥📱</p>
+            <h3>Fortnite Mobile</h3>
+            <p class="category">Battle Royale</p>
+            <p class="platforms">Platforms: <span>🖥📱</span></p>
             <a href="game.html?id=fortnite" class="install-btn">Install</a>
         </div>
 
-        <div class="app-card">
+        <div class="app-card" onclick="window.location.href='game.html?id=playtime'">
             <img src="https://i.postimg.cc/t4dyGFhn/poppy-playtime-yaypc.jpg" alt="Poppy Playtime"/>
-            <h3>POPPY PLAYTIME</h3>
-            <p>Platforms: 🖥📱</p>
+            <h3>Poppy Playtime</h3>
+            <p class="category">Horror</p>
+            <p class="platforms">Platforms: <span>🖥📱</span></p>
             <a href="game.html?id=playtime" class="install-btn">Install</a>
         </div>
 
-        <div class="app-card">
+        <div class="app-card" onclick="window.location.href='game.html?id=fifa25'">
             <img src="https://i.postimg.cc/L4qJK0hq/GOAL-Blank-WEB-Facebook-2024-07-17-T151013-046.jpg" alt="FIFA 25"/>
             <h3>FIFA 25</h3>
-            <p>Platforms: 🖥📱</p>
+            <p class="category">Sports</p>
+            <p class="platforms">Platforms: <span>🖥📱</span></p>
             <a href="game.html?id=fifa25" class="install-btn">Install</a>
         </div>
 
-        <div class="app-card">
+        <div class="app-card" onclick="window.location.href='game.html?id=spiderman'">
             <img src="https://i.postimg.cc/NfMpctm6/The-Amazing-Spider-Man-2-icon.webp" alt="Spider-Man"/>
-            <h3>SPIDER MAN</h3>
-            <p>Platforms: 🖥📱</p>
+            <h3>Spider Man</h3>
+            <p class="category">Action</p>
+            <p class="platforms">Platforms: <span>🖥📱</span></p>
             <a href="game.html?id=spiderman" class="install-btn">Install</a>
         </div>
 
-       
-
-        <div class="app-card">
+        <div class="app-card" onclick="window.location.href='game.html?id=flappyroyale'">
             <img src="https://i.postimg.cc/PJqzTbpX/flappyroyale-io.jpg" alt="Flappy Royale"/>
-            <h3>FLAPPY ROYALE</h3>
-            <p>Platforms: 🖥📱</p>
+            <h3>Flappy Royale</h3>
+            <p class="category">Arcade</p>
+            <p class="platforms">Platforms: <span>🖥📱</span></p>
             <a href="game.html?id=flappyroyale" class="install-btn">Install</a>
         </div>
 
-        <div class="app-card">
+        <div class="app-card" onclick="window.location.href='game.html?id=pokemonuranium'">
             <img src="https://i.postimg.cc/Kzcxc4Zc/TpPQbl6.png" alt="Pokemon Uranium"/>
-            <h3>POKEMON URANIUM</h3>
-            <p>Platforms: 🖥📱</p>
+            <h3>Pokemon Uranium</h3>
+            <p class="category">RPG</p>
+            <p class="platforms">Platforms: <span>🖥📱</span></p>
             <a href="game.html?id=pokemonuranium" class="install-btn">Install</a>
         </div>
 
-        <div class="app-card">
+        <div class="app-card" onclick="window.location.href='game.html?id=valorant'">
             <img src="https://i.postimg.cc/HkM0Ykxy/apps-21507-13663857844271189-4c1de202-3961-4c40-a0aa-7f4f1388775a.jpg" alt="Valorant"/>
-            <h3>VALORANT</h3>
-            <p>Platforms: 🖥📱</p>
+            <h3>Valorant</h3>
+            <p class="category">Shooter</p>
+            <p class="platforms">Platforms: <span>🖥📱</span></p>
             <a href="game.html?id=valorant" class="install-btn">Install</a>
         </div>
-		
-        <div class="app-card">
+
+        <div class="app-card" onclick="window.location.href='game.html?id=thesims4'">
             <img src="https://i.postimg.cc/3NnyrPMV/mS3N9Pj.png" alt="The Sims 4"/>
-            <h3>THE SIMS 4</h3>
-            <p>Platforms: 🖥📱</p>
+            <h3>The Sims 4</h3>
+            <p class="category">Simulation</p>
+            <p class="platforms">Platforms: <span>🖥📱</span></p>
             <a href="game.html?id=thesims4" class="install-btn">Install</a>
         </div>
-		
-		<div class="app-card">
-            <img src="https://i.postimg.cc/j2Gpfjr7/J9SS0en.jpg" alt="Garry's mod"/>
-            <h3>Garry's mod</h3>
-            <p>Platforms: 🖥📱</p>
+
+        <div class="app-card" onclick="window.location.href='game.html?id=garrysmod'">
+            <img src="https://i.postimg.cc/j2Gpfjr7/J9SS0en.jpg" alt="Garry's Mod"/>
+            <h3>Garry's Mod</h3>
+            <p class="category">Sandbox</p>
+            <p class="platforms">Platforms: <span>🖥📱</span></p>
             <a href="game.html?id=garrysmod" class="install-btn">Install</a>
         </div>
-		
-		<div class="app-card">
-            <img src="https://i.postimg.cc/g0sb7d3C/lEeVR3m.png" alt="Garry's mod"/>
-            <h3>Fall Guys</h3>
-            <p>Platforms: 🖥📱</p>
-            <a href="game.html?id=fallguys" class="install-btn">Install</a>
-        </div>
 
-        
+        <div class="app-card" onclick="window.location.href='game.html?id=fallguys'">
+            <img src="https://i.postimg.cc/g0sb7d3C/lEeVR3m.png" alt="Fall Guys"/>
+            <h3>Fall Guys</h3>
+            <p class="category">Party</p>
+            <p class="platforms">Platforms: <span>🖥📱</span></p>
+            <a href="game.html?id=fallguys" class="install-btn">Install</a>
         </div>
     </div>
 
+    <script>
+        const searchInput = document.querySelector('input[type="text"]');
+        const appCards = document.querySelectorAll('.app-card');
+        const noResults = document.getElementById('no-results');
 
-	<script>
-  const searchInput = document.querySelector('input[type="text"]');
-  const appCards = document.querySelectorAll('.app-card');
-  const noResults = document.getElementById('no-results');
+        searchInput.addEventListener('input', function () {
+            const value = this.value.toLowerCase().trim();
+            let matches = 0;
 
-  searchInput.addEventListener('input', function () {
-    const value = this.value.toLowerCase();
-    let matches = 0;
+            appCards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                if (title.includes(value)) {
+                    card.style.display = 'block';
+                    matches++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
 
-    appCards.forEach(card => {
-      const title = card.querySelector('h3').textContent.toLowerCase();
-      if (title.includes(value)) {
-        card.style.display = 'block';
-        matches++;
-      } else {
-        card.style.display = 'none';
-      }
-    });
+            noResults.style.display = matches === 0 ? 'block' : 'none';
+        });
 
-    // Show or hide the "no results" message
-    if (matches === 0) {
-      noResults.style.display = 'block';
-    } else {
-      noResults.style.display = 'none';
-    }
-  });
-</script>
-
+        // منع النقر على زر Install من التداخل مع النقر على البطاقة
+        document.querySelectorAll('.install-btn').forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                e.stopPropagation(); // منع النقر على الزر من تفعيل حدث النقر على البطاقة
+            });
+        });
+    </script>
 </body>
 </html>
