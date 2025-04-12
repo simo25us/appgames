@@ -7,7 +7,7 @@
     <style>
         body {
             background-color: #121212;
-            font-family: 'Segoe UI', Arial, sans-serif; /* تحسين الخط */
+            font-family: 'Segoe UI', Arial, sans-serif;
             color: white;
             text-align: center;
             margin: 0;
@@ -16,7 +16,7 @@
 
         h1 {
             margin: 20px 0;
-            color: #22c55e; /* تحسين لون العنوان */
+            color: #22c55e;
         }
 
         input {
@@ -27,14 +27,14 @@
             border-radius: 5px;
             border: none;
             font-size: 16px;
-            background-color: #1e1e1e; /* تحسين الخلفية */
-            color: white; /* تحسين لون النص */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* إضافة ظل خفيف */
+            background-color: #1e1e1e;
+            color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }
 
         input:focus {
             outline: none;
-            border: 1px solid #22c55e; /* تحسين عند التركيز */
+            border: 1px solid #22c55e;
         }
 
         .app-container {
@@ -51,33 +51,33 @@
             border-radius: 10px;
             width: 200px;
             text-align: center;
-            cursor: pointer; /* للإشارة إلى أن البطاقة قابلة للنقر */
-            border: 1px solid #333; /* حدود خفيفة للإشارة إلى أنها تفاعلية */
+            cursor: pointer;
+            border: 1px solid #333;
         }
 
         .app-card:hover {
-            border-color: #22c55e; /* تغيير لون الحدود عند التمرير */
-            background-color: #252525; /* تغيير خفيف في الخلفية */
+            border-color: #22c55e;
+            background-color: #252525;
         }
 
         .app-card img {
             width: 100px;
             height: 100px;
             border-radius: 10px;
-            object-fit: cover; /* تحسين عرض الصورة */
+            object-fit: cover;
         }
 
         .app-card h3 {
             margin: 10px 0;
             font-size: 18px;
             color: #fff;
-            text-transform: capitalize; /* تحسين تنسيق النص */
+            text-transform: capitalize;
         }
 
         .app-card .category {
             margin: 5px 0;
             font-size: 14px;
-            color: #22c55e; /* لون الفئة */
+            color: #22c55e;
             font-weight: 500;
         }
 
@@ -85,14 +85,14 @@
             margin: 5px 0;
             font-size: 14px;
             opacity: 0.8;
-            background-color: #252525; /* خلفية لإبراز القسم */
-            padding: 5px 10px; /* تباعد داخلي */
-            border-radius: 10px; /* زوايا دائرية */
+            background-color: #252525;
+            padding: 5px 10px;
+            border-radius: 10px;
             display: inline-block;
         }
 
         .app-card .platforms span {
-            color: #22c55e; /* لون الأيقونات */
+            color: #22c55e;
             font-weight: 600;
         }
 
@@ -118,17 +118,24 @@
 
         /* Responsive Design */
         @media (max-width: 600px) {
+            .app-container {
+                gap: 10px; /* تقليل الفراغ بين البطاقات لتناسق أفضل */
+                padding: 10px; /* تقليل التباعد الداخلي للحاوية */
+            }
+
             .app-card {
-                width: 100%;
-                max-width: 300px;
+                width: 100%; /* عرض كامل للشاشة */
+                max-width: 250px; /* تقليل الحد الأقصى للعرض لتناسق أفضل */
+                margin: 0 auto; /* توسيط البطاقة */
             }
 
             h1 {
-                font-size: 2em;
+                font-size: 1.8em; /* تقليل حجم العنوان قليلاً */
             }
 
             input {
-                width: 90%;
+                width: 90%; /* ضبط العرض ليكون أكثر ملاءمة */
+                max-width: 350px; /* تقليل الحد الأقصى للعرض */
             }
         }
     </style>
