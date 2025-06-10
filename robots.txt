@@ -1,0 +1,3 @@
+User-agent 
+Allow 
+Sitemap https://d4p.xyz/sitemap.xml
